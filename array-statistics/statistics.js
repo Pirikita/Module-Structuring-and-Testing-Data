@@ -77,7 +77,7 @@ function calculateMedian(numbers) {
   }
 
 }
-console.log(calculateMedian(numbers));
+//console.log(calculateMedian(numbers));
 
 module.exports = {
     calculateSum,
