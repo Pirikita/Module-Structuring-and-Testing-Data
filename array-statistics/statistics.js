@@ -5,6 +5,9 @@
  * Must use a for-loop for iteration.
  */
 
+let numbers = [1, 12, 7, 6, 98, 24, 10, 2];
+
+
 function calculateSum(numbers) {
     let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
@@ -12,7 +15,6 @@ function calculateSum(numbers) {
   }
   return sum;
 }
-let numbers = [1, 12, 7, 6, 98, 24, 10, 2];
 //console.log(calculateSum(numbers));
 
 /**
@@ -50,8 +52,36 @@ const SORTED = sortArray(numbers);
 //console.log('Sorted:', SORTED);
 
 
+/**
+ * Calculates the median of the array.
+ * The median is the middle number of a sorted list. If the list length is even, it's the average of the two middle numbers.
+ * @param {number[]} numbers - An array of numbers.
+ * @returns {number} The median of the numbers.
+ * Hint: Reuse your sortArray function to get a sorted copy.
+ */
+function calculateMedian(numbers) {
+  // 1. Fail Fast: Check if the array is empty. If it is, throw an Error. (Failing Fast)
+  if (numbers.length === 0) {
+    throw new Error("Cannot calculate median of an empty array.");
+  } 
+  // 2. Create a sorted copy of the array using your sortArray function.
+  const sorted = sortArray(numbers);
+
+  // 3. Find the middle index.
+  const middleIndex = Math.floor(sorted.length / 2);
+  // 4. Check if the array length is odd or even and return the correct value.
+  if (sorted.length % 2 !==0) {
+    return sorted[middleIndex];
+  } else {
+    return (sorted[middleIndex - 1] + sorted[middleIndex]) / 2;
+  }
+
+}
+console.log(calculateMedian(numbers));
+
 module.exports = {
     calculateSum,
     calculateMean,
     sortArray,
+    calculateMedian,
 };
