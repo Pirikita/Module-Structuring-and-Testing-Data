@@ -21,33 +21,39 @@ test("returns the median of the array", () => {
 });
 
 // Test with odd-length array
-const oddArray = [5, 3, 1, 4, 2];
-expect(calculateMedian([5, 3, 1, 4, 2])).toEqual(3); 
-// Sorted: [1, 2, 3, 4, 5] -> Median is 3
+test("returns the median of an odd-length array", () => {
+    const oddArray = [5, 3, 1, 4, 2];
+    expect(calculateMedian([5, 3, 1, 4, 2])).toEqual(3); 
+});
+
 // console.log("Median of odd array:", calculateMedian(oddArray));
 
 // Test with even-length array
-const evenArray = [5, 3, 1, 2];
-expect(calculateMedian([5, 3, 1, 2])).toEqual(2.5); 
-// Sorted: [1, 2, 3, 5] -> Median is (2+3)/2 = 2.5
+test("returns the median of an even-length array", () => {
+    const evenArray = [5, 3, 1, 2];
+    expect(calculateMedian([5, 3, 1, 2])).toEqual(2.5); 
+});
 // console.log("Median of even array:", calculateMedian(evenArray));
 
 // Test with one number
-const singleArray = [42];
-expect(calculateMedian([42])).toEqual(42);
+test("return number in the array", () => {
+    const singleArray = [42];
+    expect(calculateMedian([42])).toEqual(42);
+});
 // console.log("Median of single array:", calculateMedian(singleArray));
 
 // Test with two numbers
-const twoArray = [10, 20];
-expect(calculateMedian([10, 20])).toEqual(15);
+test("return median of two numbers array", () => {
+    const twoArray = [10, 20];
+    expect(calculateMedian([10, 20])).toEqual(15);
+});
 // console.log("Median of two array:", calculateMedian(twoArray));
 
 // Test failing fast - This should cause an error!
-try {
-  calculateMedian([]);
-} catch (error) {
-  console.log("Good! Error caught for empty array:", error.message);
-}
+test("return median of empty array as error", () => {
+  expect(() => calculateMedian([])).toThrow("Cannot calculate median of an empty array.");
+});
+
 
 /*
 console.log("Original array (should be unchanged):", testArray);
