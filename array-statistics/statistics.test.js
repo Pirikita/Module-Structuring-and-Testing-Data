@@ -1,4 +1,4 @@
-const { calculateSum, calculateMean, sortArray, calculateMedian} = require('./statistics.js');
+const { calculateSum, calculateMean, sortArray, calculateMedian, analyzeData} = require('./statistics.js');
 
 let testArray = [1, 12, 7, 6, 98, 24, 10, 2];
 
@@ -54,6 +54,28 @@ test("return median of empty array as error", () => {
   expect(() => calculateMedian([])).toThrow("Cannot calculate median of an empty array.");
 });
 
+
+describe("Final analyzeData tests with various arrays", () => {
+
+  test("Test case 1: [10, 5, 15, 20, 0]", () => {
+    const results = analyzeData([10, 5, 15, 20, 0]);
+    expect(results.originalData).toEqual([10, 5, 15, 20, 0]); //arrays use .toEqual().
+    expect(results.sortedData).toEqual([0, 5, 10, 15, 20]); //arrays use .toEqual().
+    expect(results.sum).toBe(50); //primitive values (sum, mean, median) use .toBe()
+    expect(results.mean).toBe(10);//primitive values (sum, mean, median) use .toBe()
+    expect(results.median).toBe(10);//primitive values (sum, mean, median) use .toBe()
+  });
+
+  test("Test case 2: [-1, 2, -3, 4]", () => {
+    const results = analyzeData([-1, 2, -3, 4]);
+    expect(results.originalData).toEqual([-1, 2, -3, 4]); //arrays use .toEqual().
+    expect(results.sortedData).toEqual([-3, -1, 2, 4]); //arrays use .toEqual().
+    expect(results.sum).toBe(2);//primitive values (sum, mean, median) use .toBe()
+    expect(results.mean).toBe(0.5);//primitive values (sum, mean, median) use .toBe()
+    expect(results.median).toBe(0.5);//primitive values (sum, mean, median) use .toBe()
+  });
+
+});
 
 /*
 console.log("Original array (should be unchanged):", testArray);
