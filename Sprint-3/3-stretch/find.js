@@ -1,11 +1,16 @@
 function find(str, char) {
   let index = 0;
+//We start with index = 0 (the first character in the string).
 
-  while (index < str.length) {
+  while (index < str.length) {  //The while loop will keep running as long as index is smaller than the string’s length.
+                                //That means it checks every character from start to end.
     if (str[index] === char) {
       return index;
-    }
-    index++;
+    } /*For each character, it checks:
+        Is the current character (str[index]) equal to the one we’re looking for (char)?
+        If yes → it immediately returns that index (stops the function). */
+
+    index++; //If it doesn’t find a match, it increases index by 1 and checks the next character.
   }
   return -1;
 }
